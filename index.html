@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Css-Cheat-Sheet</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script src="script.js"></script>
+    <nav id="navbar">
+	<div id="nav-header-div">
+		<header id="nav-header">
+			CSS Cheatsheet
+		</header>
+	</div>
+	<div id="navlinks-div">
+		<a href="#Introduction" class="nav-link">Introduction</a>
+		<a href="#Padding_and_Margin" class="nav-link">Padding and Margin</a>
+		<a href="#Block_Sizing" class="nav-link">Block Sizing</a>
+		<a href="#Scrollable_Divs" class="nav-link">Scrollable Divs</a>
+		<a href="#Flexbox" class="nav-link">Flexbox</a>
+		<a href="#Grids" class="nav-link">Grids</a>
+		<a href="#CSS_Variables" class="nav-link">CSS Variables</a>
+		<a href="#CSS_Declarations" class="nav-link">CSS Declarations</a>
+		<a href="#Link_Pseudoclasses" class="nav-link">Link Pseudoclasses</a>
+		<a href="#Floating_Navbars" class="nav-link">Floating Navbars</a>
+		<a href="#Mobile_Optimization" class="nav-link">Mobile Optimization</a>
+		<a href="#Responsive_Images_and_Video" class="nav-link">Responsive Images and Video</a>
+		<a href="#Icons" class="nav-link">Icons</a>
+	</div>
+</nav>
+<main id="main-doc">
+	<section id="Introduction" class="main-section">
+		<header>
+			Introduction
+		</header>
+		<p>Through using FreeCodeCamp to learn about Responsive Web Design, I've found myself having to look up some concepts repeatedly, or only finding the answer after a substantial search. This is meant to be a collection of "how to's" that I would normally not write, but it serves as an easy source of content to fulfill this challenge, and will hopefully be a <strong>great shorthand reference for</strong> both myself and <strong>you, weary bootstrap-pulling camper!</strong></p>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="Padding_and_Margin" class="main-section">
+		<header>
+			Padding and Margin
+		</header>
+		<p><a href="#Block_Sizing">Units of Length</a> (px, %, ...) must be used for every specified amount unless the value is 0.</p>
+		<p>Clockwise notation is usable for both padding and margin properties: [top &rarr; left]. If values are left unfilled, the opposite side is completed by the browser</p>
+		<p><code>padding: 0;</code> No padding on any side</p>
+		<p><code>margin: 10px 0 2px;</code> Margin is set to 10px on top, 2px on the bottom, and 0px on the left and right</p>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="Block_Sizing" class="main-section">
+		<header>
+			Block Sizing
+		</header>
+		<p> The width and height of blocks must be set either automatically based on contents (default), e.g.: <code>width: auto;</code> or given in units of length (the padding, margin, border, too)</p>
+		<p> Acceptable units of length:</p>
+		<ul>
+			<li>px: pixels</li>
+			<li>%: % of <em>parent element</em></li>
+			<li>em: font-size of element</li>
+			<li>rem: font-size of <em>root element</em> in the DOM</li>
+			<li>vw: 1% of viewport width</li>
+			<li>vh: 1% of viewport height</li>
+		</ul>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="Scrollable_Divs" class="main-section">
+		<header>
+			Scrollable Divs
+		</header>
+		<p>It's all about the overflow property on an element. <code>overflow: scroll;</code> leads to <em>both x & y scrollers</em>, but <code>overflow: auto;</code> lets the browser decide, so there is usually just a y-scrollbar for text. You could also specify
+			<code>overflow-x</code> or <code>overflow-y</code> properties.</p>
+		<p>There is also the question of where the scrollbar gets placed. Apparently IE (yuck!) puts them inside the element, thus not changing the space the element takes on the screen. However, Firefox and (apparently) Chrome put them outside. Given the market
+			share of these two browsers, it's not a bad idea to code for them. This documentation page you are reading now sets the width of the navmenu at the top of the page on mobile/iPad viewports (&lt815px) at <code>width: 98vw;</code> to accomodate the space
+			required by the scrollbar.</p>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="Flexbox" class="main-section">
+		<header>
+			Flexbox
+		</header>
+		<p><code>display: flex;</code> turns an element into a block-level flex container. The <code>flex-flow</code> property is shorthand for the <code>flex-direction</code> and <code>flex-wrap</code> properties. For example:</p>
+		<code class="codeblock">
+			.flexbox-class {<br>
+			&nbsp display: flex;<br>
+			&nbsp flex-flow: column-reverse nowrap;<br>
+			}<br>
+		</code>
+		<p>All the flexbox's children should have a <code>flex</code> shorthand property defined. The three values are <code>flex-grow flex-shrink flex-basis</code>, as in the following code:</p>
+		<code class="codeblock">
+			.flex-item {<br>
+			&nbsp flex: 2 1 300px;<br>
+			}<br>
+		</code>
+		<p>Alignment within a flexbox is set via <code>justify-content</code>(singular) or <code>align-items</code>(plural). Useful values are: <code>center|flex-start|flex-end|stretch</code> (stretch is default).You can center an icon or text within an element
+			based off this example:</p>
+		<code class="codeblock">.flexbox-with-centered-content {<br>
+			&nbsp display: flex;<br>
+			&nbsp justify-content: center;<br>
+			&nbsp align-items: center;<br>
+			}<br>
+		</code>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="Grids" class="main-section">
+		<header>
+			Grids
+		</header>
+		<p>The CSS Grid divides the viewport into different zones based on a row-and-column model. These zones can be defined using <code>grid-template-columns</code> and <code>grid-template-rows</code> properties. You have <em><strong>two ways</strong> of addressing these zones</em>:
+			<ol>
+				<li>You can use the <code>grid-column</code> and <code>grid-row</code> properties to <strong>define the lines</strong> (inclusive of the edges [1, #rows|#cols+1]) between which you want to draw a grid element. For example, the following creates a small
+					grid item in the upper 1/9th, and another 4 times the size in the lower right corner:<br>
+					<code class="codeblock">
+						.grid-container{<br>
+						&nbsp grid-template-columns: 1fr 1fr 1fr;<br>
+						&nbsp grid-template-rows: 1fr 1fr 1fr;<br>
+						&nbsp grid-gap: 8px 16px;/*row, then column gap*/<br>
+						}<br>
+						<br>
+						.grid-item1{<br>
+						&nbsp grid-column: 1/2;<br>
+						&nbsp grid-row: 1/2;<br>
+						}<br>
+						<br>
+						.grid-item2{<br>
+						&nbsp grid-column: 2/4;<br>
+						&nbsp grid-row: 2/4;<br>
+						}<br>
+					</code>
+				</li>
+				<li>You can use <em><code>grid-template-areas</code> to <strong>name those zones</strong> via a template</em> and then use the <code>grid-area</code> property to address them. For example:<br>
+					<code class="codeblock">
+						.grid-container{<br>
+						&nbsp display: grid;<br>
+						&nbsp grid-template-areas:<br>
+						&nbsp "sidebar nav"<br>
+						&nbsp "sidebar main";<br>
+						}<br>
+						<br>
+						.sidebar{ grid-area: sidebar; }<br>
+						<br>
+						nav { grid-area: nav; }<br>
+						<br>
+						main { grid-area: main;}<br>
+					</code>
+				</li>
+			</ol>
+			<p>You can set up recurring dynamic grid layouts using repeat() and minmax() functions in combination with autofill and autofit parameters (not covered here). <a href="https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/#article-header-id-1"
+				 target="_blank">Sara Soueidan's explanation of the difference between auto-fill and auto-fit ends with two strong video examples and explanation</a> (Scroll to the last two videos above the anchor to which this links)</p>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="CSS_Variables" class="main-section">
+		<header>
+			CSS Variables
+		</header>
+		<p> Writing "#ef45da" for a color or "300px" for an offset can get repetitive, and more importantly, can cause errors. In this document, for example, at viewports bigger than a tablet, the left-sided navbar is 300px wide, requiring the main section
+			to have an identical <code>margin-left</code> of 300 px.</p>
+		<p>Variables are what the people need for code legibility and maintainability in this instance. Technically, they are called CSS custom properties, and are declared with the "--" prefix, e.g.: <code>--variable-name</code>. You can access the variable's
+			value with the "var()" function, as in: <code>var(--variable-name)</code>.</p>
+		<p>Declaring it on the <code>:root</code> pseudo-class allows all elements to access it. Unfortunately, you can't use them in <code>@media</code> queries, because they aren't children of the root element, and thus don't inherit the value of the variable.
+			This example code from this page should help make this more concrete:</p>
+		<code class="codeblock">
+			:root{ --sidebar-width: 300px; }<br>
+			<br>
+			nav{<br>
+			&nbsp position:fixed;<br>
+			&nbsp width: var(--sidebar-width);<br>
+			}<br>
+			<br>
+			main{	margin-left: var(--sidebar-width); }<br>
+		</code>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="CSS_Declarations" class="main-section">
+		<header>
+			CSS Declarations
+		</header>
+		<p>Here's the syntax for different CSS selectors:</p>
+		<code class="codeblock">
+			.class{}<br>
+			#id{}<br>
+			element{}<br>
+			element.class{}<br>
+			element>child{}<br>
+			element[attribute="value"]{}<br>
+		</code>
+		<p><a href="https://www.w3schools.com/cssref/css_selectors.asp" target="_blank">A more complete list from W3Schools.</a></p>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="Link_Pseudoclasses" class="main-section">
+		<header>
+			Link Pseudoclasses
+		</header>
+		<p>In the CSS, you have to declare the <code>a:active</code> pseudo-class after the <code>a:hover</code> one. So, just remember this mnemonic:</p>
+		<p><strong>"LuV HA" (love her) = <code>:link, :visited, :hover, :active</code></strong>.</p>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="Floating_Navbars" class="main-section">
+		<header>
+			Floating Navbars
+		</header>
+		<p>Give the <code>&ltnav&gt</code> a fixed position (in this example, at the top of the screen)</p>
+		<code class="codeblock">
+			#header {<br>
+			&nbsp position: fixed;<br>
+			&nbsp z-index: 1;<br>
+			&nbsp top: 0px;<br>
+			&nbsp left: 0px;<br>
+			}<br>
+		</code>
+		<p>In addition, you have to offset all the targets of the navigation links so they don't get covered by the navbar height (49px in this example). Note: you may need to fiddle with the margin to get the elements to line up well. The solution uses the pseudoelement ::before to avoid excessive padding that can rise up to hundreds of pixels. This example only works if all the backgrounds around the target are the same.</p>
+		<code class="codeblock">
+			/* NOTE: Change the height and margin for your project.<br>
+			&nbsp&nbsp This was for a 49px high navbar */<br>
+			<br>
+			.nav-target::before {<br>
+			&nbsp content: "";<br>
+			&nbsp display: block;<br>
+			&nbsp height: 49px;<br>
+			&nbsp margin-top: -51px;<br>
+			}
+		</code>
+		<p>The following method works even if the targeted elements have different backgrounds.</p>
+		<code class="codeblock">
+			.nav-target {<br>
+			&nbsp border-top: 100px solid transparent;<br>
+			&nbsp margin-top: -100px;<br>
+			&nbsp background-clip: padding-box;<br>
+			}<br>
+		</code>
+		<p><a href="http://nicolasgallagher.com/jump-links-and-viewport-positioning/demo/#method-B">Code Credit & Other Solutions: Nicholas Gallagher</a></p>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="Mobile_Optimization" class="main-section">
+		<header>
+			Mobile Optimization
+		</header>
+		<p>The virtual viewport isn't always what the device's hardware pixel width is. You can force mobile devices to actually use the mobile design of your website instead of their default virtual viewport by adding the following to to your <code>&lthead&gt</code> element:</p>
+		<code class="codeblock">
+			&ltmeta name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1"&gt
+		</code>
+		<p><em>(on Codepen, [Settings&rarr;HTML Tab&rarr;Stuff for &lthead&gt])</em></p>
+		<h3>Bootstrap Users:</h3>
+		<p>I started using Bootstrap at first to accomplish the Web Design Projects before I switched to FreeCodeCamp's Beta (which had way more lesson material on responsive design). I wrote a tool that tells you which Bootstrap breakpoint your device is <strong>actually</strong> displaying: <a href="http://vipinjeetsandhu.com/pixels/" target="#blank">Displayed Pixel Width Tool</a>.</p>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="Responsive_Images_and_Video" class="main-section">
+		<header>
+			Responsive Images and Video
+		</header>
+		<p>How to make an image responsive (Code credit: <a href="https://beta.freecodecamp.org/en/challenges/responsive-web-design-principles/make-an-image-responsive" target="#blank">FreeCodeCamp Beta</a>)</p>
+		<code class="codeblock">
+			img {<br>
+			&nbsp display: block;<br>
+			&nbsp max-width: 100%;<br>
+			&nbsp height: auto;<br>
+			}<br>
+		</code>
+		<p>How to make an embedded Youtube video responsive (Code credit: <a href="https://avexdesigns.com/responsive-youtube-embed/" target="#blank">John Surdakowski</a>)</p>
+		<code class="codeblock">
+			.video-container {<br>
+			&nbsp position: relative;<br>
+			&nbsp padding-bottom: 50%;<br>
+			&nbsp padding-top: 30px; height: 0; overflow: hidden;<br>
+			}<br>
+			<br>
+			.video-container iframe,<br>
+			.video-container object,<br>
+			.video-container embed {<br>
+			&nbsp position: absolute;<br>
+			&nbsp top: 0;<br>
+			&nbsp left: 0;<br>
+			&nbsp width: 100%;<br>
+			&nbsp height: 100%;<br>
+			}<br>
+		</code>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+	<section id="Icons" class="main-section">
+		<header>
+			Icons
+		</header>
+		<p>I have found two ways to include icons and other symbols:</p>
+		<ol>
+			<li>
+				<h3>Font Awesome (CDN Method):</h3>
+				<p>The html that inserts the icon depends on the specific icon (go to the Font Awesome page to find it). It gets inserted as a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i" target="#blank">typographic offset (<code>&lti&gt</code>)</a>. For example, for the dollar bill I used in my product landing page:<p>
+				<code class="codeblock">&lti class="far fa-money-bill-alt"&gt&lt/i&gt</code>
+				<p>The class "fa*": b = brand, s|"" = solid, r = regular, l = light</p>
+				<p>You must include the following code in your <code>&lthead&gt</code>element</p>
+				<code class="codeblock">
+					&ltlink rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous"&gt
+				</code>
+				<p><em>(on Codepen, [Settings&rarr;HTML Tab&rarr;Stuff for &lthead&gt])</em></p>
+
+				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+			</li>
+			<li>
+				<h3>HTML Elements:</h3>
+				<p><a href="https://www.w3schools.com/charsets/ref_html_entities_a.asp" target="#blank">HTML elements and symbols</a> can be inserted as text.<p>
+			</li>
+		</ol>
+		<a href="#" class="top-link">Back to Top</a>
+	</section>
+</main>
+  </body>
+</html>
